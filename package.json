@@ -1,0 +1,21 @@
+{
+  "name": "remun-non-medik",
+  "version": "1.0.0",
+  "description": "Sistem Penilaian Kinerja Non Medis RSUD AWS Samarinda",
+  "scripts": {
+    "login": "clasp login",
+    "push": "clasp push",
+    "push:force": "clasp push --force",
+    "pull": "clasp pull",
+    "deploy": "clasp deploy",
+    "open": "clasp open",
+    "logs": "clasp logs",
+    "status": "clasp status"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.4.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,45 @@
+name: Deploy to Google Apps Script
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Code.js'
+      - 'index.html'
+      - 'appsscript.json'
+
+  # Bisa juga trigger manual dari GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Push to GAS via clasp
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Buat file credentials clasp dari GitHub Secret
+      - name: Setup clasp credentials
+        run: |
+          mkdir -p ~/.config/clasp
+          echo '${{ secrets.CLASPRC_JSON }}' > ~/.clasprc.json
+          echo '${{ secrets.CLASP_JSON }}' > .clasp.json
+
+      - name: Push code to Google Apps Script
+        run: npm run push:force
+
+      - name: Deploy new version (optional)
+        run: npx clasp deploy --description "Auto-deploy from GitHub - $(date +'%Y-%m-%d %H:%M:%S')"
+        continue-on-error: true  # Tidak gagalkan workflow jika deploy versi gagal

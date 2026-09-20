@@ -1,0 +1,9 @@
+# Normalkan line endings ke LF di repo, checkout sesuai OS
+* text=auto
+
+# Script dan kode selalu LF
+*.js text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.md text eol=lf

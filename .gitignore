@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# clasp auth (JANGAN pernah commit file ini — berisi token Google Anda)
+.clasprc.json
+
+# Environment variables lokal
+.env
+.env.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# File sementara / scratch
+scratch/
+
+# Log
+*.log
+npm-debug.log*
